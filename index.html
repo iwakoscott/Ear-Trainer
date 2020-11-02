@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ear Trainer Quiz</title>
+
+    <link href='./css/styles.css' rel='stylesheet'/>
+</head>
+<body>
+    <div class='wrapper'>
+        <div class='directions'>
+            <img src='./assets/images/bongoCat.png' alt=''>
+           
+            <p><span class='quiz-directions'>Directions:</span> Click 'Begin' to hear a sequence of two notes. If you wish to hear the sequence again, click 'Replay Interval'. When you think you know the answer, select the interval you heard from the menu of options. You will see immediately if you were right or wrong ~ the correct answer will be highlighted in green, the incorrect answer (if applicable) in red. At any time, you can click 'Quit' if you wish to... well, quit. It's pretty simple &#x1F604;</p>
+            <p>When you are finished, if you missed any questions, you will be given the opportunity to redo the quiz with just those questions that you missed.</p>
+            <p>Consistency is key. Train just a little bit everyday, and you will <span class='highlight'>improve your musicality</span>.</p>
+            
+        </div>
+
+        <!-- credit to https://getwaves.io -->
+        <svg class='waves-svg' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path  fill-opacity="1"
+                d="M0,128L48,138.7C96,149,192,171,288,160C384,149,480,107,576,128C672,149,768,235,864,229.3C960,224,1056,128,1152,117.3C1248,107,1344,181,1392,218.7L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
+            </path>
+        </svg>
+
+        <div class='game-wrapper'>
+            <p>Question 
+                <span aria-live='polite' id='js-current-question'>0</span> / 
+                <span id='js-max-questions' aria-live='polite'>3</span>
+            </p>
+
+            <div aria-hidden='true' class='progress-bar-wrapper' id='js-progress-bar-wrapper'>
+                <!-- putting these here because i was unable to add them dynamically with JavaScript -->
+              
+                <!--  "Music note icons are provided by Tilda Publishing" https://tilda.cc  -->
+                <img class='progress-bar-note' src='./assets/images/musicNote.svg' />
+                <img class='progress-bar-note' src='./assets/images/musicNote.svg' />
+                <img class='progress-bar-note' src='./assets/images/musicNote.svg' />
+                <img class='progress-bar-note' src='./assets/images/musicNote.svg' />
+                <img class='progress-bar-note' src='./assets/images/musicNote.svg' />
+                <img class='progress-bar-note' src='./assets/images/musicNote.svg' />
+                <img class='progress-bar-note' src='./assets/images/musicNote.svg' />
+                <img class='progress-bar-note' src='./assets/images/musicNote.svg' />
+                <img class='progress-bar-note' src='./assets/images/musicNote.svg' />
+                <img class='progress-bar-note' src='./assets/images/musicNote.svg' />
+            </div>
+            <div class='game-control-buttons-wrapper'>
+                <button class='button begin' id='js-startTraining' aria-live='polite'>Begin</button>
+                <button class='button replay' id='js-replay' disabled>Replay Interval</button>
+                <button class='button quit' id='js-quit' disabled>Quit</button>
+            </div>
+
+            <div class='results-display' id='js-results-display'>
+                <p id='js-results-text' class='results-text' aria-live='polite'></p>
+                <p class='review-wrong-answers' id='js-review-wrong-answers-question'>Would you like to review the intervals you missed?
+                    <button class='button review' id='js-review-button-yes'>Yes</button>
+                    <button  class='button quit'id='js-review-button-no'>No</button>
+                </p>
+            </div>
+
+            <span id='select-label' class='select-label'>Select the interval that you heard</span>
+            <div class='select-wrapper'>
+
+                <select id='js-select-custom' class='select-custom' aria-labelledby="select-label" size='12' aria-expanded='true'>
+                    <option class='option one' value='1'>Minor 2nd</option>
+                    <option class='option two' value='2'>Major 2nd</option>
+                    <option class='option three' value='3'>Minor 3rd</option>
+                    <option class='option four' value='4'>Major 3rd</option>
+                    <option class='option five' value='5'>Perfect 4th</option>
+                    <option class='option six' value='6'>Tritone</option>
+                    <option class='option seven' value='7'>Perfect 5th</option>
+                    <option class='option eight' value='8'>Minor 6th</option>
+                    <option class='option nine' value='9'>Major 6th</option>
+                    <option class='option ten' value='10'>Minor 7th</option>
+                    <option class='option eleven' value='11'>Major 7th</option>
+                    <option class='option twelve' value='12'>Octave</option>       
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <small>Copyright &copy; <span id='js-copyright-year'></span> <a href='https://www.tangoechodesign.com' target='_blank' rel='noopener noreferrer'>TangoEcho Design</a>. All Rights Reserved</small>
+    </footer>
+    
+
+    <audio data-key="28" src="./assets//audio/28.wav"></audio>
+    <audio data-key="29" src="./assets//audio/29.wav"></audio>
+    <audio data-key="30" src="./assets//audio/30.wav"></audio>
+    <audio data-key="31" src="./assets//audio/31.wav"></audio>
+    <audio data-key="32" src="./assets//audio/32.wav"></audio>
+    <audio data-key="33" src="./assets//audio/33.wav"></audio>
+    <audio data-key="34" src="./assets//audio/34.wav"></audio>
+    <audio data-key="35" src="./assets//audio/35.wav"></audio>
+    <audio data-key="36" src="./assets//audio/36.wav"></audio>
+    <audio data-key="37" src="./assets//audio/37.wav"></audio>
+    <audio data-key="38" src="./assets//audio/38.wav"></audio>
+    <audio data-key="39" src="./assets//audio/39.wav"></audio>
+    <audio data-key="40" src="./assets//audio/40.wav"></audio>
+    <audio data-key="41" src="./assets//audio/41.wav"></audio>
+    <audio data-key="42" src="./assets//audio/42.wav"></audio>
+    <audio data-key="43" src="./assets//audio/43.wav"></audio>
+    <audio data-key="44" src="./assets//audio/44.wav"></audio>
+    <audio data-key="45" src="./assets//audio/45.wav"></audio>
+    <audio data-key="46" src="./assets//audio/46.wav"></audio>
+    <audio data-key="47" src="./assets//audio/47.wav"></audio>
+    <audio data-key="48" src="./assets//audio/48.wav"></audio>
+    <audio data-key="49" src="./assets//audio/49.wav"></audio>
+    <audio data-key="50" src="./assets//audio/50.wav"></audio>
+    <audio data-key="51" src="./assets//audio/51.wav"></audio>
+    <audio data-key="52" src="./assets//audio/52.wav"></audio>
+
+    <script src='./js/main.js'></script>
+</body>
+
+</html>

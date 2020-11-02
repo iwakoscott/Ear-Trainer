@@ -1,0 +1,380 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+:root {
+    --black: #333;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--black);
+    background-color: #191919;
+    margin: 0;
+    line-height: 1.5;
+    font-family: 'optima';
+    padding: 1rem 1rem 0;
+}
+
+/* wraps everything except the footer and audio elements */
+.wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+/* styles for the game directions section */
+.directions {
+    display: flow-root;
+    position: relative;
+    margin-bottom: 0;
+    background-color: #191919;
+    color: white;
+}
+
+.waves-svg {
+    fill: #191919;
+}
+
+.directions img {
+    /* masks a thin white line bordering the image */
+    outline: 1px solid #212121;
+    outline-offset: -1px;
+
+    float: left;
+    width: 50px;
+    margin: 0 0.4rem 0 0;
+}
+
+.quiz-directions {
+    font-weight: bold;
+    font-size: 1.16rem;
+    letter-spacing: 0.8px;
+}
+
+.directions > p:first-of-type {
+    margin-top: 0;
+}
+
+.highlight {
+    color: white;
+    background: linear-gradient(
+        to bottom,
+        #212121 0,
+        #212121 60%,
+        rgba(165, 27, 123, 0.6) 60%
+    );
+}
+
+.game-wrapper {
+    justify-content: center;
+    padding: 0.5rem;
+
+    /* for testing only, border: 1px solid blue; */
+}
+
+.progress-bar-wrapper {
+    display: none;
+    justify-content: center;
+
+    /* for testing only, border: 1px solid blue; */
+}
+
+.progress-bar-note {
+    width: 25px;
+    opacity: 0;
+}
+
+.progress-bar-note + .progress-bar-note {
+    margin-left: 16px;
+}
+
+/* partially opaque progress bar note */
+.partially-opaque {
+    opacity: 0.15;
+}
+
+/* fully opaque progress bar note */
+.opaque {
+    opacity: 1;
+}
+
+.game-control-buttons-wrapper {
+    justify-content: center;
+    margin: 1.5rem 0;
+
+    /* for testing only,  border: 1px solid orange; */
+}
+
+/* button styles */
+.button {
+    font-size: inherit;
+    border-radius: 4px;
+    padding: 6px 10px;
+    border: 1px solid #dee2e6;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.button:not(:disabled):hover,
+.button:not(:disabled):focus {
+    color: white;
+    background-color: #191919;
+}
+
+.button + .button {
+    margin-left: 8px;
+}
+
+.results-display {
+    display: none;
+}
+
+.select-label {
+    display: inline-block;
+    margin-bottom: 1rem;
+    text-align: center;
+
+    /* for testing only, border: 1px solid green; */
+}
+
+.select-wrapper {
+    position: relative;
+
+    /* for testing only, border: 1px solid orange; */
+}
+
+.select-custom {
+    width: 250px;
+    padding: 5px;
+}
+
+.select-custom:focus {
+    outline: none;
+
+    /* takes the place of focus outline, because outline will be square */
+    box-shadow: 0 0 6px 1px teal;
+}
+
+/* option element styles */
+.option {
+    padding: 10px 8px;
+}
+
+.option:hover,
+.option:focus {
+    outline: 1px solid #a51b7b;
+    cursor: pointer;
+}
+
+/*!  this is only here as a hack to get around a bug in my javascript -> I am unable to call .focus() on the options with javascript */
+.option-focused {
+    outline: 1px solid #a51b7b;
+}
+
+.option:checked {
+    /* this is a hack for overriding the user agent style sheet styles for the option element  */
+    background: #ffffff repeat url('../assets/images/white.png');
+}
+
+.correct,
+.correct:hover {
+    outline: 4px double green;
+    outline-offset: -4px;
+}
+
+.incorrect,
+.incorrect:hover {
+    outline: 4px double red;
+    outline-offset: -4px;
+}
+
+/* footer syles */
+footer {
+    padding: 3rem 1rem 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+footer * {
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: #ccc;
+    text-decoration: none;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 525px) {
+    .wrapper {
+        padding: 1rem;
+    }
+
+    .directions {
+        background-color: #212121;
+        padding: 1rem;
+    }
+
+    .progress-bar-wrapper {
+        display: flex;
+    }
+
+    .waves-svg {
+        fill: #212121;
+    }
+
+    .game-wrapper {
+        display: grid;
+        padding: 0 0 1rem;
+    }
+
+    .game-control-buttons-wrapper {
+        display: flex;
+    }
+
+    .select-wrapper {
+        width: 450px;
+        height: 450px;
+    }
+
+    .select-custom {
+        display: block;
+        width: 100%;
+        max-width: 450px;
+        height: 450px;
+        position: relative;
+        padding: 0;
+        border: none;
+        appearance: none;
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0 0 1px 0.5px teal;
+    }
+
+    /*
+    CURSOR CREDIT: https://custom-cursor.com/en/collection/memes/bongo-cat
+    */
+    .select-custom:hover {
+        cursor: url('../assets/images/bongoCat3.png'), pointer;
+    }
+
+    .option {
+        padding: 0;
+        position: absolute;
+        width: 75px;
+        height: 75px;
+        left: 50%;
+        top: 50%;
+        margin-left: -37.5px;
+        margin-top: -37.5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+
+        border: 1px solid gray;
+        transition: all 0.2s ease;
+
+        /*  puting this here to match the style when checked, otherwise there will be a brief flash of blue */
+        background: #ffffff repeat url('../assets/images/white.png');
+    }
+
+    option:checked {
+        /* this is a hack for overriding the user agent style sheet styles for the option element  */
+        background: #ffffff repeat url('../assets/images/white.png');
+    }
+
+    .option:hover {
+        outline: none;
+        /*? use pseudo element instead of border?? */
+        border: 1px solid #a51b7b;
+        cursor: url('../assets/images/bongoCat3.png'), pointer;
+    }
+
+    .option:focus {
+        border: 1px solid #a51b7b;
+        border-radius: 50%;
+    }
+
+    .option-focused {
+        outline: none;
+        box-shadow: 0 0 2px 2px #a51b7b;
+    }
+
+    /* ? instead of box shadow, should I do this with pseudo element and transition the opacity, because box shadow causes repaint ??? */
+    .correct,
+    .correct:hover {
+        border: none;
+        outline: none;
+        box-shadow: 0 0 0 2px green;
+    }
+
+    .incorrect,
+    .incorrect:hover {
+        border: none;
+        outline: none;
+        box-shadow: 0 0 0 2px red;
+    }
+
+    /*
+    CREDIT FOR POSITIONING CIRCLES WITHIN A CIRCLE, because math is not my thing
+
+        https://stackoverflow.com/questions/12813573/position-icons-into-circle
+        https://codepen.io/nobitagit/pen/qdYJaN
+    */
+
+    .one {
+        transform: translate(175px);
+    }
+
+    .two {
+        transform: rotate(32.727272deg) translate(175px) rotate(-32.727272deg);
+    }
+
+    .three {
+        transform: rotate(65.454545deg) translate(175px) rotate(-65.454545deg);
+    }
+
+    .four {
+        transform: rotate(98.1818deg) translate(175px) rotate(-98.1818deg);
+    }
+
+    .five {
+        transform: rotate(130.909deg) translate(175px) rotate(-130.909deg);
+    }
+
+    .six {
+        transform: rotate(163.6363deg) translate(175px) rotate(-163.6363deg);
+    }
+
+    .seven {
+        transform: rotate(196.3636deg) translate(175px) rotate(-196.3636deg);
+    }
+
+    .eight {
+        transform: rotate(229.0909deg) translate(175px) rotate(-229.0909deg);
+    }
+
+    .nine {
+        transform: rotate(261.8181deg) translate(175px) rotate(-261.8181deg);
+    }
+
+    .ten {
+        transform: rotate(294.5454deg) translate(175px) rotate(-294.5454deg);
+    }
+
+    .eleven {
+        transform: rotate(327.2727deg) translate(175px) rotate(-327.2727deg);
+    }
+
+    /* we don't need .twelve because this was already perfectly centered with .option styles */
+}

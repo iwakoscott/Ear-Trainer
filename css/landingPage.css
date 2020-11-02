@@ -1,0 +1,166 @@
+@font-face {
+    font-family: abiland;
+    src: url('../assets/Abiland.ttf');
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+:root {
+    --black: #333;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--black);
+    margin: 0;
+    background-color: #191919;
+    line-height: 1.5;
+    font-family: 'optima';
+    padding: 1rem 1rem 0;
+}
+
+/* wraps everything except the footer */
+.wrapper {
+    position: relative;
+    padding: 1rem;
+    background-color: white;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+header {
+    position: relative;
+    /* for testing only, border: 1px solid purple; */
+
+    /* give the header a fixed height so the page layout isn't janky because of the animation on the notes vortex image. */
+    /* ! how to do this responsively. it's too big for mobile! */
+    height: 402px;
+}
+
+header::before {
+    content: 'Ear Trainer';
+    display: block;
+    position: absolute;
+    width: 60%;
+
+    font-family: abiland;
+    font-weight: bold;
+    font-size: 4.5rem;
+    letter-spacing: 1px;
+
+    text-align: center;
+
+    top: -35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: #b41d86;
+    animation: slideDown 1.5s ease 2s forwards;
+
+    /* for testing only,  border: 1px solid blue; */
+}
+
+.notes-vortex-image {
+    display: block;
+    max-width: 400px;
+    margin: 0 auto;
+
+    filter: opacity(40%);
+    animation: scaleDown 3s ease-out forwards;
+
+    /* for testing only,  border: 1px solid red; */
+}
+
+/* header animations */
+@keyframes scaleDown {
+    0% {
+        transform: scale(2);
+    }
+
+    100% {
+        transform: none;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        top: -35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.highlight {
+    display: inline-block;
+    background-color: #fbe6f4;
+    padding: 0 5px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    appearance: button;
+    text-decoration: none;
+    color: white;
+    background-color: #a51b7b;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+    outline: 1px solid white;
+    outline-offset: -4px;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #c21f90;
+}
+
+.button:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: 0;
+}
+
+/* footer syles */
+footer {
+    padding: 3rem 1rem 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+footer * {
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: #ccc;
+    text-decoration: none;
+}
+
+/* media queries */
+@media (prefers-reduced-motion: reduce) {
+    .notes-vortex-image {
+        animation: none;
+    }
+
+    header::before {
+        animation: none;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
