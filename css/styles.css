@@ -246,6 +246,7 @@ footer a:hover {
     }
 
     .select-custom {
+        overflow: hidden;
         display: block;
         width: 100%;
         max-width: 450px;
