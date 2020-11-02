@@ -11,7 +11,7 @@ You can check out the site and play the quiz [here](https://msksfo.github.io/Ear
 ## Getting Started
 
 -   Clone or download the repo.
--   cd into the project directory and click landingPage.html to open up the quiz in your browser window.
+-   cd into the project directory and click index.html to open up the quiz in your browser window.
 
 ## Quiz Directions
 
