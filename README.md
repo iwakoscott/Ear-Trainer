@@ -6,7 +6,7 @@ I grew up as a classical pianist, finding patterns in music. Now as I am transit
 
 Ear training is important, fundamental really, and will benefit you no matter your skill level as a musician. For the enthusiasts it will bring a new level of appreciation and understanding to what you hear. For the beginners, it will connect the dots between what you hear and the music theory that you are (or should be) studying. For more advanced students thinking of majoring in music, ear training will be a part of your entrance exams, so the earlier you begin learning, the better.
 
-You can check out the site and play the quiz [here](https://msksfo.github.io/Ear-Trainer/)]
+You can check out the site and play the quiz [here](https://msksfo.github.io/Ear-Trainer/)
 
 ## Getting Started
 
