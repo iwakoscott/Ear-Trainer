@@ -182,11 +182,6 @@ body {
     outline: 1px solid #a51b7b;
 }
 
-.option:checked {
-    /* this is a hack for overriding the user agent style sheet styles for the option element  */
-    background: #ffffff repeat url('../assets/images/white.png');
-}
-
 .correct,
 .correct:hover {
     outline: 4px double green;
@@ -281,14 +276,6 @@ footer a:hover {
 
         border: 1px solid gray;
         transition: all 0.2s ease;
-
-        /*  puting this here to match the style when checked, otherwise there will be a brief flash of blue */
-        background: #ffffff repeat url('../assets/images/white.png');
-    }
-
-    option:checked {
-        /* this is a hack for overriding the user agent style sheet styles for the option element  */
-        background: #ffffff repeat url('../assets/images/white.png');
     }
 
     .option:hover {
