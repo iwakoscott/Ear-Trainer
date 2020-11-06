@@ -269,9 +269,13 @@ footer a:hover {
         margin-left: -37.5px;
         margin-top: -37.5px;
 
-        display: flex;
+        display: grid;
         justify-content: center;
         align-items: center;
+
+        /* ! using this because justify-content center is not working, but why not?? */
+        text-align: center;
+
         border-radius: 50%;
 
         border: 1px solid gray;
@@ -280,16 +284,20 @@ footer a:hover {
 
     .option:hover {
         outline: none;
+
         /*? use pseudo element instead of border?? */
-        border: 1px solid #a51b7b;
+        border: 2px solid #a51b7b;
         cursor: url('../assets/images/bongoCat3.png'), pointer;
     }
 
     .option:focus {
-        border: 1px solid #a51b7b;
+        outline: none;
+
+        border: 2px solid #a51b7b;
         border-radius: 50%;
     }
 
+    /* ! do i still need this, since i'm not using option elements? */
     .option-focused {
         outline: none;
         box-shadow: 0 0 2px 2px #a51b7b;
