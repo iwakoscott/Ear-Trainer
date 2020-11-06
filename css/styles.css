@@ -160,6 +160,8 @@ body {
 }
 
 .select-custom:focus {
+    outline: none;
+
     /* takes the place of focus outline, because outline will be square */
     box-shadow: 0 0 6px 1px teal;
 }
