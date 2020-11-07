@@ -173,6 +173,10 @@ body {
     cursor: pointer;
 }
 
+.option:focus {
+    outline: none;
+}
+
 /*!  this is only here as a hack to get around a bug in my javascript -> I am unable to call .focus() on the options with javascript */
 .option-focused {
     outline: 1px solid #a51b7b;
