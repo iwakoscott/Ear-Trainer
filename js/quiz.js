@@ -141,8 +141,8 @@ function generateIntervals(numQuestions = 3){
 }
 
 function handleUserGuess(e){
-    const selectedOption = selectCustom.selectedIndex;
     const guess =  e.target.value
+    const targetNode = e.target.tagName === "SELECT" ? e.target[guess] : e.target;
     
     
     const lastSequencePlayed = intervalSequences[questionNumber - 1]
@@ -150,11 +150,11 @@ function handleUserGuess(e){
    
     if(guess == answer){
        intervalSequences[questionNumber - 1].splice(2, 1, 'correct')
-       selectCustom[selectedOption].classList.add('correct')
+       targetNode.classList.add('correct')
        
     }else {
         intervalSequences[questionNumber - 1].splice(2, 1, 'incorrect')
-        selectCustom[selectedOption].classList.add('incorrect')
+        targetNode.classList.add('incorrect')
         selectCustom[answer -1].classList.add('correct')
     }
 }
@@ -327,44 +327,16 @@ quitButton.addEventListener('click', function(){
 })
 
 // use keyup because it doesn't continue to fire if user holds the key down.
-selectCustom.addEventListener('keyup', function(e){
-    console.log('selected index when keyup is fired', this.selectedIndex)
-    
-    const space = 32;
+selectCustom.addEventListener('keydown', function(e){    
     const enter = 13;
-    const up = 38;
-    const down = 40;
-    
-    switch (e.keyCode){
-        case enter:
-            runOnClick(e)
-            const options = Array.from(selectCustom.querySelectorAll('.option'));
-            options.forEach(option => {
-                option.classList.remove('option-focused')
-            })
-            
-            console.log('selectedIndex after clicking enter: ', this.selectedIndex)
-            console.log(selectCustom.options)
-           
-            return
-
-        case space:
-            return;
-
-        case down:
-            console.log(selectCustom.selectedIndex)
-            focusNextOption()
-            return;
-
-        case up:
-            return;
-        
-        default:
-            return
+    if (e.keyCode === enter){
+        runOnClick(e)
     }
 })
 
-selectCustom.addEventListener('click', runOnClick);
+selectCustom.addEventListener("change", function(e){
+    runOnClick(e);
+})
 
 noReviewWrongAnswersButton.addEventListener('click', function() {
     resetAllGameValues()
